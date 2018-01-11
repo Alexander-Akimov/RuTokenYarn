@@ -14,13 +14,13 @@
     "rutoken": "^1.0.8"
   },
   "babel": {
-    "presets": [
-      "latest"
-    ]
+    "presets": ["env"]
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
     "browserify": "^15.0.0",
     "del": "^3.0.0",
     "gulp": "3.9.0",

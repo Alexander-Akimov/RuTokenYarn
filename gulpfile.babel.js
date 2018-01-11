@@ -14,7 +14,7 @@ const paths = {
   build: 'build',
   libSrc: 'src/libs/**',
   libDest: 'build/libs',
-  ownScripts: ['src/present.js', 'src/index.js'],
+  ownScripts: ['src/present.js'],
 };
 
 gulp.task('clean', () => del(paths.build));
@@ -25,10 +25,11 @@ gulp.task('libs', () => gulp.src(paths.libSrc) .pipe(gulp.dest(paths.libDest)));
 
 gulp.task('deps', ['libs'], () => 
   browserify('src/dependencies.js')
+    .transform("babelify", {presets: ["env", "react"]})
     .bundle()
     .pipe(source('dependencies.js'))
-    .pipe(buffer())
-    .pipe(uglify())
+    //.pipe(buffer())
+    //.pipe(uglify())
     .pipe(gulp.dest(paths.build)));
 
 // gulp.task('build', ['clean'], () => 
@@ -36,16 +37,18 @@ gulp.task('deps', ['libs'], () =>
 //     .pipe(babel())
 //     .pipe(gulp.dest(paths.libDir)));
 
-gulp.task('scripts', ['deps'], () =>
-  gulp.src(paths.ownScripts)
-    .pipe(gulp.dest(paths.build)));
-
 // gulp.task('main', ['build'], (callback) => 
 //   exec(`node ${paths.libDir}`, (error, stdout) => {
 //     console.log(stdout);
 //     return callback(error);
 //   }));
 //gulp.task('watch', () => gulp.watch(paths.allSrcJs, ['main']));
+
+gulp.task('scripts', ['deps'], () => 
+  gulp.src(paths.ownScripts)
+  .pipe(babel())
+  .pipe(gulp.dest(paths.build)));
+
 gulp.task('main', ['clean'], () => gulp.start('pages', 'scripts'));
 
 gulp.task('watch', () => gulp.watch(paths.allSrcJs, ['main']));

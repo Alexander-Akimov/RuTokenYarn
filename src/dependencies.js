@@ -1,7 +1,14 @@
-//import {polyfill()} from 'es6-promise';
-//import rutoken from 'rutoken';
-//global.rutoken = rutoken
+import Dog from './dog'
+import rutoken from 'rutoken';// global.rutoken = require('rutoken');
+import _ from 'console-polyfill'; // require('console-polyfill');
+import __ from 'es6-promise/auto'; //require('es6-promise').polyfill();
 
-require('es6-promise').polyfill();
-require('console-polyfill');
-global.rutoken = require('rutoken');
+global.rutoken = rutoken
+
+
+
+window.onload = () => {
+	const browserToby = new Dog('Browser Toby');
+	document.querySelector('.app').innerText = browserToby.bark();
+	console.log(rutoken)
+}
