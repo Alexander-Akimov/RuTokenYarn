@@ -6,10 +6,27 @@
   "author": "Alexander Akimov",
   "license": "MIT",
   "scripts": {
-    "start": "node ."
+    "start": "gulp"
   },
   "dependencies": {
-    "color": "^2.0.1",
+    "console-polyfill": "^0.3.0",
+    "es6-promise": "^4.2.2",
     "rutoken": "^1.0.8"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "browserify": "^15.0.0",
+    "del": "^3.0.0",
+    "gulp": "3.9.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-uglify": "^3.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }
