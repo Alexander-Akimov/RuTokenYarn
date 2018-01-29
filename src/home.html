@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<script type="text/javascript" src="dependencies.js"></script>		
+		<script type="text/javascript" src="libs/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="libs/jquery-base64.min.js"></script>
 		<!-- <script type="text/javascript" src="dog.js"></script> -->
 		<!-- <script type="text/javascript" src="index.js"></script> -->
 		<script type="text/javascript" src="present.js"></script>
@@ -11,7 +13,9 @@
 	<body>
 		<div>			
 			<div class="app"></div>
-			<select id="device-list"></select>
+			<select id="device-list">
+				<option>Обновите список устройств</option>
+			</select>
 			<button id="refresh-dev">↓↑</button>
 		</div>
 	</body>
